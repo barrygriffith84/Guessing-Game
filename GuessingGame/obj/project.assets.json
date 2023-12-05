@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\barry\\OneDrive\\Desktop\\GuessingGame\\GuessingGame\\GuessingGame.csproj",
+      "projectUniqueName": "C:\\Users\\barry\\workspace\\GuessingGame\\GuessingGame\\GuessingGame.csproj",
       "projectName": "GuessingGame",
-      "projectPath": "C:\\Users\\barry\\OneDrive\\Desktop\\GuessingGame\\GuessingGame\\GuessingGame.csproj",
+      "projectPath": "C:\\Users\\barry\\workspace\\GuessingGame\\GuessingGame\\GuessingGame.csproj",
       "packagesPath": "C:\\Users\\barry\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\barry\\OneDrive\\Desktop\\GuessingGame\\GuessingGame\\obj\\",
+      "outputPath": "C:\\Users\\barry\\workspace\\GuessingGame\\GuessingGame\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\barry\\AppData\\Roaming\\NuGet\\NuGet.Config",

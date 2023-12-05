@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuessingGame.Auth;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -9,9 +10,11 @@ namespace GuessingGame.Game
 {
     internal static class GameSession
     {
-        public static void StartGameSession(List<string>numStringList)
+        public static void StartGameSession()
         {
             Console.Clear();
+
+            List<string> numStringList = APIManager.APIManager.GetRandomNumbers().GetAwaiter().GetResult();
 
             List<string> randomNumberStringList = numStringList;
 
@@ -19,6 +22,7 @@ namespace GuessingGame.Game
 
 
             int guessCount = 0;
+            bool isWinner = false;
             string resultsMessage;
             string finalMessage = "Ahh shucks, you lost.";
 
@@ -72,6 +76,7 @@ namespace GuessingGame.Game
                 if (correctLocation == 4)
                 {
                     finalMessage = $"{correctNumber} number(s) correct and {correctLocation} location(s) correct.  You got them all correct, you win!";
+                    isWinner = true;
                     break;
                 }
                 else if (correctNumber > 0)
@@ -93,6 +98,8 @@ namespace GuessingGame.Game
                 }
             }
 
+            Console.WriteLine();
+
             Console.WriteLine(finalMessage);
 
             Console.WriteLine();
@@ -101,8 +108,28 @@ namespace GuessingGame.Game
 
             Console.ReadLine();
 
-            
-            MainMenu.GenerateMainMenu(numStringList);
+            if (LoggedInUser.isLoggedIn)
+            {
+                LoggedInUser.gamesPlayed++;
+                LoggedInUser.totalGuesses = guessCount + LoggedInUser.totalGuesses;
+                
+                if(isWinner)
+                {
+                    LoggedInUser.wins++;
+                }
+                else
+                {
+                    LoggedInUser.losses++;
+                }
+
+                Stats.RecordStats();
+                MainMenu.GenerateLoggedInMainMenu();
+            }
+            else
+            {
+                MainMenu.GenerateMainMenu();
+            }
+
 
         }
 

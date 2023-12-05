@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace GuessingGame.APIManager
 {
-    static internal class APIManager
+    internal static class APIManager
     {
 
         private static string _baseURL = "https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new";
 
-        public static async Task<List<string>> GetRandomNumbers()
+        internal static async Task<List<string>> GetRandomNumbers()
         {
             List<string> numbers = new List<string>();
 
