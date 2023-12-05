@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuessingGame.Auth;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,12 @@ namespace GuessingGame.Game
 {
     static internal class Demo
     {
-        static internal void ShowDemo(List<string> numStringList)
+        static internal void ShowDemo()
         {
             Console.Clear();
+
+            List<string> numStringList = APIManager.APIManager.GetRandomNumbers().GetAwaiter().GetResult(); 
+
 
             Console.WriteLine("Guessing game will generate four random numbers between 0 and 7.");
 
@@ -55,8 +59,14 @@ namespace GuessingGame.Game
 
             Console.ReadLine();
 
-            
-            MainMenu.GenerateMainMenu(numStringList);
+            if (LoggedInUser.isLoggedIn)
+            {
+                MainMenu.GenerateLoggedInMainMenu();
+            }
+            else
+            {
+                MainMenu.GenerateMainMenu();
+            }
 
             Console.ReadLine();
         }
